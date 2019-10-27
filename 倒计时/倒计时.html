@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>倒计时</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+
+			function fnTimeleft(){
+				//实际开发中需要读取后台的时间，可以通过ajax来读取
+				var sNow = new Date();
+
+				// 未来时间：4月30日晚24点
+				var sFuture = new Date(2019,11,1,24,0,0);
+
+				//计算还有多少秒
+				var sLeft = parseInt((sFuture-sNow)/1000);
+
+				//计算还剩多少天
+				var iDays = parseInt(sLeft/86400);
+
+				// 计算还剩多少小时
+				var iHours  = parseInt((sLeft%86400)/3600);
+
+				// 计算还剩多少分
+				var iMinutes = parseInt(((sLeft%86400)%3600)/60);
+
+				// 计算还剩多少秒
+				var iSeconds = sLeft%60;
+
+
+				var iS= (sFuture-sNow)%1000
+
+				var sTr = '距离12月1日还剩：'+ iDays + 'day' + '  ' + fnTodou(iHours) + 'h' + '  ' + fnTodou(iMinutes) + 'min' + '  ' + fnTodou(iSeconds) + 's' + '  ' + fnT(iS) + 'ms';
+
+
+				oDiv.innerHTML = sTr;
+			}
+
+			fnTimeleft();
+			setInterval(fnTimeleft,50);
+
+
+			function fnTodou(n){
+
+				if(n<10)
+				{
+					return '0'+n;
+				}
+				else{
+					return n;
+				}
+			}
+			function fnT(n){
+
+				if(n<10)
+				{
+					return '00'+n;
+				}
+
+				else if(n<100)
+				{
+					return '0'+n;
+				}
+
+				else{
+					return n;
+				}
+			}
+
+
+
+		}
+
+
+	</script>
+</head>
+<style type="text/css">
+	body{
+		margin: 0 0;
+	}
+	.d{
+		text-align:center;
+		line-height: 800px;
+		font-size:25px;
+		color:#78cdd1;
+		background: url(./images/111.jpg) no-repeat center center;
+	}
+	.s{
+		height: 25px;
+		width: 291px;
+		margin: 0 auto;
+		
+	}
+	.s a{
+		font-size: 12px;
+		text-decoration:none;
+		color: #4e4e4e
+	}
+
+
+	.s a:hover{
+		color: #78cdd1;
+	}
+
+
+	.t{
+		font-size: 12px;
+		height: 25px;
+		width: 392px;
+		margin: 0 auto;
+		color: #4e4e4e
+		
+	}
+
+
+	.u{
+		font-size: 12px;
+		height: 25px;
+		width: 245px;
+		margin: 0 auto;
+		color: #4e4e4e
+	}
+</style>
+<body>
+	<div  class="d" id="div1"></div>
+	<div class="s">
+		<a href="#">关于我们</a>
+		<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		<a href="#">联系我们</a>
+		<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		<a href="#">招聘人才</a>
+		<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		<a href="#">友情链接</a>
+	</div>
+	<div class="t">
+		CopyRight&nbsp;©2019 &nbsp;赣州倒计时信息技术有限公司 &nbsp;All&nbsp; Rights&nbsp; Reserved
+	</div>
+	<div class="u">
+		电话：010-****888&nbsp; 赣ICP备*******8号
+	</div>
+</body>
+</html>
